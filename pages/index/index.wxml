@@ -1,0 +1,30 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="top">
+  <!-- 1 -->
+    <image class='top_img'  mode="widthFix"
+          src="../images/top.png"
+    ></image>
+  </view>
+   <view class="money">
+    <movable-area class="money_area">
+      <movable-view direction="vertical">
+        <image class='money_img' mode="widthFix"
+          src="../images/money.png"
+    ></image>
+    <!-- 55 -->
+      </movable-view>
+    </movable-area>
+  </view>
+  <!-- <view class="money">
+    <image class='money_img' mode="widthFix"
+          src="../images/money.png"
+    ></image>
+  </view> -->
+  <view class="bottom">
+  <!-- 3 -->
+    <image class='bottom_img' mode="widthFix"
+          src="../images/bottom.png"
+    ></image>
+  </view>
+</view>
