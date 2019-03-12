@@ -1,30 +1,41 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="top">
-  <!-- 1 -->
-    <image class='top_img'  mode="widthFix"
-          src="../images/top.png"
-    ></image>
-  </view>
-   <view class="money">
-    <movable-area class="money_area">
-      <movable-view direction="vertical">
-        <image class='money_img' mode="widthFix"
-          src="../images/money.png"
-    ></image>
-    <!-- 55 -->
+<view class="container"  wx:if="{{!hasUserInfo}}">
+  <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" type='primary'> 获取头像昵称 </button>
+  <text>开始前，请授权哟~</text>
+</view>
+<block wx:else>
+<view  class="container" >
+    <movable-area  class="money_area">
+      <movable-view inertia wx:if="{{show}}"  bindtouchstart='changeStart' bindtouchend='change'  direction="vertical" y="{{y}}"  animation="{{false}}">
+        <image class='money_img' mode="widthFix" src="../images/money.png">
+        </image>
+      </movable-view>
+<block wx:else>
+      <movable-view inertia bindtouchstart='changeStart' bindtouchend='change'  direction="vertical" y="{{y}}"  animation="{{false}}">
+        <image class='money_img' mode="widthFix" src="../images/money.png">
+        </image>
+        <!-- 66666 -->
+      </movable-view>
+</block>
+<movable-view inertia bindtouchstart='changeStart' bindtouchend='change'  direction="vertical" y="{{y}}"  animation="{{false}}">
+        <image class='money_img' mode="widthFix" src="../images/money.png">
+        </image>
+        <!-- 8 -->
       </movable-view>
     </movable-area>
-  </view>
-  <!-- <view class="money">
-    <image class='money_img' mode="widthFix"
-          src="../images/money.png"
-    ></image>
-  </view> -->
-  <view class="bottom">
-  <!-- 3 -->
-    <image class='bottom_img' mode="widthFix"
-          src="../images/bottom.png"
-    ></image>
-  </view>
 </view>
+</block>
+<!-- <swiper
+  vertical="{{true}}"
+  duration="vertical"
+  circular='{{true}}'
+  indicator-dots='{{true}}'
+>
+
+    <swiper-item>
+      <image src="../images/money.png" class="slide-image" width="355" height="150" />
+    </swiper-item>
+<swiper-item>
+      <image src="../images/money.png" class="slide-image" width="355" height="150" />
+    </swiper-item>
+</swiper> -->

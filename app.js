@@ -1,11 +1,18 @@
 //app.js
+const io = require('/utils/weapp.socket.io.js')
+var socketUrl = 'http://127.0.0.1:3000/'
+const socket = io(
+  socketUrl
+)
 App({
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
+    wx.setStorageSync('logs', logs);
+    (()=>{
+      this.globalData.socket = socket
+    })()
     // 登录
     wx.login({
       success: res => {
@@ -32,8 +39,15 @@ App({
         }
       }
     })
+    wx.getSystemInfo({
+      success:(res) =>{
+        this.globalData.wh = parseInt(res.windowHeight / 6)
+      }
+    })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    wh: 60,
+    socket: null
   }
 })
